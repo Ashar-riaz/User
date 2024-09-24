@@ -1,0 +1,22 @@
+/* Nav.css */
+
+.navbar-nav .nav-item a {
+    position: relative;
+}
+
+.navbar-nav .nav-item a:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: black; /* Change the color as needed */
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item a:hover:after,
+.navbar-nav .nav-item a:active:after {
+    width: 100%;
+}
