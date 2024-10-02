@@ -1,22 +1,20 @@
 // src/app/dashboard/page.tsx
-"use client";
+"use client"; // Ensure this is a client component
 
 import React, { useEffect, useState } from 'react';
-
+import { useSession } from 'next-auth/react';
 import VoiceInput from "../../component/VoiceInput";
 import Nav from "@/component/Navbar/Nav";
 
 const DashboardPage: React.FC = () => {
+  const { data: session } = useSession();
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    // Get the user's name from localStorage
-    const storedUserName = localStorage.getItem("userName");
-      if (storedUserName) {
-        setUserName(storedUserName);
-  }}, []);
-
- 
+    if (session) {
+      setUserName(session.user?.name || "");
+    }
+  }, [session]);
 
   return (
     <>
@@ -26,7 +24,6 @@ const DashboardPage: React.FC = () => {
         <h1 className="text-4xl font-bold mb-8">Dashboard with Voice Input</h1>
         <VoiceInput />
       </div>
-     
     </>
   );
 };

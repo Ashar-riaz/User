@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons from react-icons
-import styles from './login.module.css';
+import styles from "./login.module.css";
+import { signIn } from 'next-auth/react';
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -53,7 +55,9 @@ export default function Login() {
               required
             />
           </div>
-          <div className="form-group mb-3 position-relative"> {/* Added position-relative for positioning */}
+          <div className="form-group mb-3 position-relative">
+            {" "}
+            {/* Added position-relative for positioning */}
             <input
               type={showPassword ? "text" : "password"} // Toggle between text and password
               className="form-control"
@@ -62,18 +66,31 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <span 
-              className="position-absolute" 
-              style={{ right: '10px', top: '50%', transform: 'translateY(-50%)', cursor: 'pointer' }} 
+            <span
+              className="position-absolute"
+              style={{
+                right: "10px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+              }}
               onClick={() => setShowPassword(!showPassword)} // Toggle visibility
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Show eye icon based on state */}
+              {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
+              {/* Show eye icon based on state */}
             </span>
           </div>
           <button type="submit" className="btn btn-primary btn-block w-100">
             Login
           </button>
         </form>
+        <button
+          type="button"
+          className="btn btn-secondary w-100"
+          onClick={() => signIn("google")}
+        >
+          Login with Google
+        </button>
 
         {message && (
           <div
@@ -88,7 +105,7 @@ export default function Login() {
 
         <div className="mt-3 text-center">
           <p>
-          Don&apos;t have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-primary">
               Signup
             </Link>

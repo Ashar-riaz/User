@@ -7,8 +7,8 @@ export default function Nav({ showAuthButtons, userName }) {  // Added userName 
         <>
             <div className="">
             </div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary ">
+                <div className="container-fluid nav">
                     <div className="d-flex align-items-center">
                         <a className="navbar-brand" href="/">EVA-Digital Human</a>
                     </div>
@@ -30,7 +30,6 @@ export default function Nav({ showAuthButtons, userName }) {  // Added userName 
                         {showAuthButtons ? (
                             <>
                                 <a className="btn btn-outline-primary me-2" href="/login">Login</a>
-                                <a className="btn btn-outline-primary me-2" href="/signup">Signup</a>
                             </>
                         ) : (
                             <span className="navbar-text">Welcome, {userName}</span>  // Display the user name
