@@ -21,12 +21,14 @@ const DashboardPage: React.FC = () => {
       <Nav showAuthButtons={false} userName={userName} />
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
         <h1 className="text-4xl font-bold mb-8">Welcome, {userName || "User"}!</h1>
-        
+        <h2>hy</h2>
         {/* Add the VoiceProcessor component to the dashboard */}
         <VoiceProcessor />
 
         {/* You can add more components or sections to your dashboard here */}
-      </div>
+      </div >
+
+
     </>
   );
 };
